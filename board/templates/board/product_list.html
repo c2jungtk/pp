@@ -1,0 +1,16 @@
+{% extends 'board/base.html' %}
+{% block content %}
+
+
+
+<div class="pro_li">
+    <ul>
+
+        {% for pro in products %}
+        <li><a href="{% url 'product:product_detail' pk=pro.pk%}">{{ pro }}</a></li>
+        {% endfor %}
+        <li><a href="{% url 'product:product_new' %}">글쓰기</a></li>
+    </ul>
+</div>
+
+{% endblock %}

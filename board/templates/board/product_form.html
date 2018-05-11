@@ -1,0 +1,13 @@
+{% extends 'board/base.html' %}
+
+{% block content %}
+
+<form action="" method="POST" enctype="multipart/form-data" class="newform">
+    {% csrf_token %}
+    {{ form.as_p }}
+    {{ img.as_p }}
+    <p>첨부할 이미지를 선택해 주세요.</p>
+
+    <input type="submit" value="새 글 추가" />
+</form>
+{% endblock %}

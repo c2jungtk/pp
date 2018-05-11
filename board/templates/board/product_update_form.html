@@ -1,0 +1,14 @@
+{% extends 'board/base.html' %}
+{% block sub_title %}
+<p><a href="{% url 'product:product_detail' object.pk %}">돌아가기</a></p>
+{% endblock %}
+{% block content %}
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <p>첨부할 이미지를 선택해 주세요.</p>
+    {{ img.as_p }}
+    <br>
+    <input type="submit" value="수정"/>
+</form>
+{% endblock %}

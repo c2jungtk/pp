@@ -1,0 +1,17 @@
+{% extends 'home.html' %}
+{% block title %}
+<div class="cate">
+
+{% for cate in category %}
+
+<a href="{% url 'product:product_list' %}?category={{ cate }}">{{cate}}</a>
+
+{% endfor %}
+<!--<a href="{% url 'product:product_new' %}">글+</a>-->
+</div>
+
+{% endblock %}
+{% block sub_title %}
+{% endblock %}
+{% block content %}
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}로그인{% endblock %}
+{% block content %}
+{% if form.errors %}
+<p>아이디와 비밀번호를 다시 확인하세요.</p>
+{% endif %}
+<p>아이디와 비밀번호를 입력하세요.</p>
+<form action="" method="post">
+    <ul>
+    {% csrf_token %}
+    <li>{{ form.username.label_tag }}{{ form.username }}</li>
+    <li>{{ form.password.label_tag }}{{ form.password }}</li>
+    <button type="submit">로그인</button>
+    <input type="hidden" name="next" value="{{ next }}">
+    </ul>
+</form>
+{% endblock %}

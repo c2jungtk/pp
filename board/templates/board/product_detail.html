@@ -1,0 +1,28 @@
+{% extends 'board/base.html' %}
+{% block sub_title %}
+<a href="{% url 'product:product_update' object.pk %}">수정</a>
+<a href="{% url 'product:product_delete' object.pk %}">삭제</a>
+
+{% endblock %}
+{% load static %}
+{% block content %}
+<div class="detdiv">
+    <ul>
+        <li>제목: {{ object.title }}</li>
+        <li><img src="{% get_media_prefix %}{{ object.img }}" alt=""></li>
+        <li>내용: {{ object.content }}</li>`
+        <li>작성일: {{ object.create_date }}</li>
+    </ul>
+</div>
+{% if user.is_authenticated %}
+<a href="{% url 'product:add_comment_to_post' pk=product.pk %}">댓글</a>
+{% endif %}
+ {% for comment in product.comments.all %}
+        {% if user.is_authenticated or comment.approved_comment %}
+            <div>
+                <p>댓글: {{ comment.text|linebreaksbr }}</p>
+                <p>유저: {{ comment.author }}</p>
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endblock %}

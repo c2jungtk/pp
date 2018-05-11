@@ -1,0 +1,12 @@
+{% extends 'board/base.html' %}
+{% block sub_title %}
+<p><a href="{% url 'product:product_detail' object.pk %}">돌아가기</a></p>
+
+{% endblock %}
+{% block content %}
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <p>"{{object}}"을(를) 정말 삭제하시겠습니까?</p>
+    <input type="submit" value="예, 삭제합니다."/>
+</form>
+{% endblock %}
